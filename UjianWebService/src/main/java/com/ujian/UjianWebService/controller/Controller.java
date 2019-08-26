@@ -34,34 +34,12 @@ public class Controller {
 
 	public void addDataUser() {
 		user = new User();
-		user.setId1(2);
+		user.setId(2);
 		user.setUsername("Aldi");
 		user.setEmail("aldi@klien1.co.id");
-		user.setPersonel(getAllPersonel());
-		
-		personnel = new Personel();
-		personnel.setId(2);
-		personnel.setCode("PERSONNEL/PROGRAMMER1");
-		personnel.setUserId(2);
-		personnel.setPhotoUrl("http://localhost/storage/JN1/programmer/profile/D0JH0sJ1X2Kf0D7nqlPPhM4oNw0oKOTS9cwZqhI2.jpeg");
-		personnel.setFirstName("Johar");
-		personnel.setMiddleName("Adi");
-		personnel.setLastName("Budi1");
-		personnel.setCompleteName("Johar Adi Budi1");
-		personnel.setGender("Laki-laki");
-		personnel.setHeight("176cm");
-		personnel.setWeight("80Kg");
-		personnel.setDob("17 November 1995");
-		personnel.setPob("Jakarta");
-		personnel.setHp("085712345667");
-		personnel.setAddress("Jl. Klien 1");
-		personnel.setFirebaseToken(null);
-		personnel.setDeviceId("Nomor IMEI");
-		personnel.setPosition(position);
-		personnel.setGroup(group);
 		
 		position = new Position();
-		position.setId(3);
+		position.setId(2);
 		position.setCode("PROGRAMMER");
 		position.setName("programmer");
 		position.setDescription("programmer");
@@ -83,11 +61,32 @@ public class Controller {
 		groups.setAttendanceQrCode("abcdefghijklmnopqrstuvwxyz");
 		groups.setStatus(1);
 		
+		personnel = new Personel();
+		personnel.setId(1);
+		personnel.setCode("PERSONNEL/PROGRAMMER1");
+		personnel.setPhotoUrl("http://localhost/storage/JN1/programmer/profile/D0JH0sJ1X2Kf0D7nqlPPhM4oNw0oKOTS9cwZqhI2.jpeg");
+		personnel.setFirstName("Johar");
+		personnel.setMiddleName("Adi");
+		personnel.setLastName("Budi1");
+		personnel.setCompleteName("Johar Adi Budi1");
+		personnel.setGender("Laki-laki");
+		personnel.setHeight("176cm");
+		personnel.setWeight("80Kg");
+		personnel.setDob("17 November 1995");
+		personnel.setPob("Jakarta");
+		personnel.setHp("085712345667");
+		personnel.setAddress("Jl. Klien 1");
+		personnel.setFirebaseToken("123456");
+		personnel.setDeviceId("Nomor IMEI");
+		personnel.setUser(user);
+		personnel.setPosition(position);
+		personnel.setGroup(groups);
+		
+		
+		
 		em.getTransaction().begin();
 		
-		em.merge(user);
-		em.merge(position);
-		em.merge(groups);
+		em.merge(personnel);
 		
 		em.getTransaction().commit();
 

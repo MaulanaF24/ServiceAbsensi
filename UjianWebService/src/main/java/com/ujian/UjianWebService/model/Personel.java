@@ -24,8 +24,6 @@ public class Personel {
 	private int id;
 	@Column
 	private String code;
-	@Column(name = "user_id")
-	private int userId;
 	@Column(name = "photo_url")
 	private String photoUrl;
 	@Column(name = "first_name")
@@ -55,13 +53,14 @@ public class Personel {
 	@Column(name = "device_id")
 	private String deviceId;
 	
-//	@OneToOne
-//	private Position position;
-//	@OneToOne
-//	private Group group;
+	@OneToOne
+	private Position position;
+	@OneToOne
+	private Group group;
 	
-	@ManyToOne(cascade = CascadeType.ALL)
-	@JoinColumn(name = "id1" , insertable = false,updatable = false)
+	@ManyToOne(cascade=CascadeType.ALL)
+	@JoinColumn(name = "user_id" )
+	@JsonBackReference
 	private User user;
 	
 
@@ -74,7 +73,7 @@ public class Personel {
 		this.user = user;
 	}
 
-/*	public Position getPosition() {
+	public Position getPosition() {
 		return position;
 	}
 
@@ -88,7 +87,7 @@ public class Personel {
 
 	public void setGroup(Group group) {
 		this.group = group;
-	} */
+	} 
 
 	public int getId() {
 		return id;
@@ -106,13 +105,6 @@ public class Personel {
 		this.code = code;
 	}
 
-	public int getUserId() {
-		return userId;
-	}
-
-	public void setUserId(int userId) {
-		this.userId = userId;
-	}
 
 	public String getPhotoUrl() {
 		return photoUrl;

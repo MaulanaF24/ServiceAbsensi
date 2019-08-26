@@ -23,20 +23,21 @@ import com.fasterxml.jackson.annotation.JsonManagedReference;
 public class User {
 
 	@Id
-	private int id1;
+	private int id;
 	@Column
 	private String username;
 	@Column
 	private String email;
-	@OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
+	@OneToMany(mappedBy = "user")
+	@JsonManagedReference
 	private List<Personel> personel;
 
 	
 	public User() {
 		this.personel = new ArrayList<Personel>();
 	}
-	public User(int id1,String username) {
-		this.id1 = id1;
+	public User(int id,String username) {
+		this.id = id;
 		this.username = username;
 	}
 	public List<Personel> getPersonel() {
@@ -47,12 +48,12 @@ public class User {
 		this.personel = personel;
 	}
 
-	public int getId1() {
-		return id1;
+	public int getId() {
+		return id;
 	}
 
-	public void setId1(int id1) {
-		this.id1 = id1;
+	public void setId(int id) {
+		this.id = id;
 	}
 
 	public String getUsername() {

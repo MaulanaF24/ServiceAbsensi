@@ -10,6 +10,8 @@ public class UjianWebServiceApplication {
 
 	public static void main(String[] args) {
 		SpringApplication.run(UjianWebServiceApplication.class, args);
+		
+		Controller.getInstance().addDataUser();
 	}
 
 }
