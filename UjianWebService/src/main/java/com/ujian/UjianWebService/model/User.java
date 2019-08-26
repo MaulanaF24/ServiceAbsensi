@@ -3,6 +3,7 @@ package com.ujian.UjianWebService.model;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -13,26 +14,29 @@ import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
+
 
 @Entity
 @Table(name = "user")
 public class User {
 
 	@Id
-	private int id;
+	private int id1;
 	@Column
 	private String username;
 	@Column
 	private String email;
-	@OneToMany(mappedBy = "user")
+	@OneToMany(mappedBy = "user",cascade = CascadeType.ALL)
 	private List<Personel> personel;
 
 	
 	public User() {
 		this.personel = new ArrayList<Personel>();
 	}
-	public User(int id,int user_id) {
-		this.id = id;
+	public User(int id1,String username) {
+		this.id1 = id1;
 		this.username = username;
 	}
 	public List<Personel> getPersonel() {
@@ -43,12 +47,12 @@ public class User {
 		this.personel = personel;
 	}
 
-	public int getId() {
-		return id;
+	public int getId1() {
+		return id1;
 	}
 
-	public void setId(int id) {
-		this.id = id;
+	public void setId1(int id1) {
+		this.id1 = id1;
 	}
 
 	public String getUsername() {

@@ -1,5 +1,6 @@
 package com.ujian.UjianWebService.model;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Id;
@@ -9,6 +10,9 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 import javax.persistence.Transient;
+
+import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 
 
 
@@ -20,9 +24,8 @@ public class Personel {
 	private int id;
 	@Column
 	private String code;
-	@ManyToOne
 	@Column(name = "user_id")
-	private User user;
+	private int userId;
 	@Column(name = "photo_url")
 	private String photoUrl;
 	@Column(name = "first_name")
@@ -52,14 +55,26 @@ public class Personel {
 	@Column(name = "device_id")
 	private String deviceId;
 	
-	@OneToOne
-	private Position position;
-	@OneToOne
-	private Group group;
-
+//	@OneToOne
+//	private Position position;
+//	@OneToOne
+//	private Group group;
+	
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "id1" , insertable = false,updatable = false)
+	private User user;
 	
 
-	public Position getPosition() {
+	
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+
+/*	public Position getPosition() {
 		return position;
 	}
 
@@ -73,7 +88,7 @@ public class Personel {
 
 	public void setGroup(Group group) {
 		this.group = group;
-	}
+	} */
 
 	public int getId() {
 		return id;
@@ -91,14 +106,12 @@ public class Personel {
 		this.code = code;
 	}
 
-	
-
-	public User getUser() {
-		return user;
+	public int getUserId() {
+		return userId;
 	}
 
-	public void setUser(User user) {
-		this.user = user;
+	public void setUserId(int userId) {
+		this.userId = userId;
 	}
 
 	public String getPhotoUrl() {

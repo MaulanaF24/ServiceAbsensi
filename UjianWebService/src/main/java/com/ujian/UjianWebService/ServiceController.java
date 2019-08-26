@@ -21,7 +21,9 @@ public class ServiceController {
 
 	public List<User> getAllUser() {
 
-		return Controller.getInstance().getAllUser();
+		List<User> user = Controller.getInstance().getAllUser();
+		System.out.println(user.size());
+		return user;
 
 	}
 
