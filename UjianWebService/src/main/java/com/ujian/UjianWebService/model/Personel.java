@@ -22,7 +22,7 @@ public class Personel {
 	private String code;
 	@ManyToOne
 	@Column(name = "user_id")
-	private int userId;
+	private User user;
 	@Column(name = "photo_url")
 	private String photoUrl;
 	@Column(name = "first_name")
@@ -91,12 +91,14 @@ public class Personel {
 		this.code = code;
 	}
 
-	public int getUserId() {
-		return userId;
+	
+
+	public User getUser() {
+		return user;
 	}
 
-	public void setUserId(int userId) {
-		this.userId = userId;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public String getPhotoUrl() {

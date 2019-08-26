@@ -24,7 +24,7 @@ public class User {
 	private String username;
 	@Column
 	private String email;
-	@OneToMany(mappedBy = "personel")
+	@OneToMany(mappedBy = "user")
 	private List<Personel> personel;
 
 	
@@ -33,7 +33,7 @@ public class User {
 	}
 	public User(int id,int user_id) {
 		this.id = id;
-		this.user_id = user_id;
+		this.username = username;
 	}
 	public List<Personel> getPersonel() {
 		return personel;
